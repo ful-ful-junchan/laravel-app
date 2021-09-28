@@ -52,9 +52,9 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://laravel.test.jp/laravel/'),
+    'url' => env('APP_URL', 'http://laravel.test.jp/laravel'),
 
-    'asset_url' => env('ASSET_URL', 'http://laravel.test.jp/'),
+    'asset_url' => env('ASSET_URL', 'http://laravel.test.jp'),
 
     /*
     |--------------------------------------------------------------------------

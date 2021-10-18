@@ -24,36 +24,36 @@
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               @foreach($sidebarSectionList as $sidebarSection)
                 <div class="menu_section">
-                  <h3>{{ $sidebarSection['sectionTitle'] }}</h3>
+                  <h3>{{ $sidebarSection['title'] }}</h3>
                   <ul class="nav side-menu">
-                    @foreach($sidebarSection['sidebarList'] as $sidebar)
+                    @foreach($sidebarSection['sidebarList'] as $parentSidebarData)
                       <li>
                         @if (!empty($sidebar['url']))
                           <a href="{{ $sidebar['url'] }}">
                         @else
                           <a>
                         @endif
-                          
+                        
                           {{-- アイコン --}}
-                          @if (!empty($sidebar['icon']))
+                          @if (!empty($parentSidebarData['icon']))
                             <i class="fa {{ $sidebar['icon'] }}"></i>
                           @endif
                           
                           {{-- メニュータイトル --}}
-                          &nbsp;{{ $sidebar['menu'] }}&nbsp;
+                          &nbsp;{{ $parentSidebarData['title'] }}&nbsp;
                           
                           {{-- ドロップダウンマーク --}}
-                          @if (count($sidebar['links']) > 0)
+                          @if (count($parentSidebarData['childSidebarList']) > 0)
                             <span class="fa fa-chevron-down"></span>
                           @endif
                         </a>
                         
                         {{-- 子メニュー --}}
-                        @if (count($sidebar['links']) > 0)
+                        @if (count($parentSidebarData['childSidebarList']) > 0)
                           <ul class="nav child_menu">
-                            @foreach($sidebar['links'] as $linkKey => $linkData)
+                            @foreach($parentSidebarData['childSidebarList'] as $sidebarKey => $sidebarData)
                               <li>
-                                <a href="{{ url($linkData['url']) }}?l={{ $linkData['linkId'] }}" lId="{{ $linkData['linkId'] }}">{{ $linkData['title'] }}</a>
+                                <a href="{{ url($sidebarData['url']) }}?lId={{ $sidebarData['sidebar_master_id'] }}" lId="{{ $sidebarData['sidebar_master_id'] }}">{{ $sidebarData['title'] }}</a>
                               </li>
                             @endforeach
                           </ul>

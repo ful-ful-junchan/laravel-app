@@ -2,9 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Redirect;
-use App\Http\Controllers\sample\SampleController;
+use App\Http\Controllers\Sample\SampleController;
 
-use App\Http\Controllers\menu\MenuController;
+use App\Http\Controllers\Sidebar\SidebarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +18,8 @@ use App\Http\Controllers\menu\MenuController;
 */
 
 // メニュー操作
-Route::prefix('menu')->group(function() {
-	Route::get('/list', [ MenuController::class, 'list' ])->name('menu.list');
+Route::prefix('sidebar')->group(function() {
+	Route::get('/list', [ SidebarController::class, 'list' ])->name('sidebar.list');
 });
 
 
